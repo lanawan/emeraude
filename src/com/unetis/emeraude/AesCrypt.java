@@ -1,7 +1,5 @@
 package com.unetis.emeraude;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.security.InvalidKeyException;
@@ -16,9 +14,7 @@ public class AesCrypt {
 	byte [] mac;
 
     public AesCrypt(String keyOption) throws SocketException, UnknownHostException {
-    	InetAddress ip = InetAddress.getLocalHost();
-    	NetworkInterface network = NetworkInterface.getByInetAddress(ip);
-		mac = (keyOption + toHex(network.getHardwareAddress())).getBytes();
+		mac = keyOption.getBytes();
     }
 
     public String encrypt(String cleartext) throws AesException {
